@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			IndicTrans Model 
+		</div>
+		<h2>Translation of text</h2>
+		</div>
+	</header>
+	<p style="color:blue;font-size:20"><b>Results for Sentence</b></p>
+	<div class="results">
+	{{ prediction }}
+
+	</div>
+
+</body>
+</html>
