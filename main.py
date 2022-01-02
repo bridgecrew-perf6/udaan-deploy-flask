@@ -6,14 +6,17 @@ import os
 from werkzeug.utils import secure_filename
 import sys
 import fitz
-sys.path.append('/home/sanskar/NLP-Deployment-Heroku/udaan-deploy-pipeline') 
+sys.path.append('./udaan-deploy-pipeline')
+# sys.path.append('')
+# print(sys.path[0]) 
+
 from full_script import create_final_set
 
 
 app = Flask(__name__)
 api = Api(app)
 api_secret_key = ['sanskar@api','ayush@api']
-UPLOAD_FOLDER = '/home/sanskar/NLP-Deployment-Heroku/pdf_upload/'
+UPLOAD_FOLDER = './pdf_upload/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -131,6 +134,6 @@ def num_of_pages(key , pages):
 
 if __name__ == '__main__':
         print('please wait while model loads and server starts up')
-        tn.load_model()
+        # tn.load_model()
         app.run(debug= True , host = "0.0.0.0")
 

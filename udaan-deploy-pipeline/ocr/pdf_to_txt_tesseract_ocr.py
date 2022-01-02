@@ -23,8 +23,7 @@ project_folder_name = sys.argv[2]
 pdftoimg = sys.argv[5]
 
 
-outputDirIn='/home/sanskar/NLP-Deployment-Heroku/udaan-deploy-pipeline/output_books/'
-
+outputDirIn='./output_books/'
 outputDirectory=outputDirIn+ project_folder_name
 print('output directory is ', outputDirectory)
 #create images,text folder
@@ -56,7 +55,8 @@ def simple_counter_generator(prefix="", suffix=""):
         yield 'p' 
 
 output_file=simple_counter_generator("page",".jpg")
-        
+print('orig pdf oath is' , orig_pdf_path)   
+print('cwd is' , os.getcwd())     
 if(parse_boolean(imageConvertOption)):
     convert_from_path(orig_pdf_path ,output_folder=imagesFolder, dpi=300,fmt='jpeg',jpegopt=jpegopt,output_file=output_file)
 
@@ -70,7 +70,8 @@ if pdftoimg != 'pdf2img':
   #os.environ['CHOSENFILENAMEWITHNOEXT']=chosenFileNameWithNoExt
   os.system('find $IMAGESFOLDER -maxdepth 1 -type f > $OUTPUTDIRECTORY/tmp.list')
 
-  tessdata_dir_config = r'--tessdata-dir "$/home/sanskar/NLP-Deployment-Heroku/udaan-deploy-pipeline/tesseract-exec/tessdata/"'
+  # tessdata_dir_config = r'--tessdata-dir "$/home/sanskar/NLP-Deployment-Heroku/udaan-deploy-pipeline/tesseract-exec/tessdata/"'
+  tessdata_dir_config = r'--tessdata-dir "$./tesseract-exec/tessdata/"'
   languages=pytesseract.get_languages(config=tessdata_dir_config)
   lcount=0
   tesslanglist={}
@@ -108,9 +109,11 @@ if not os.path.exists(outputDirectory+"/Dicts"):
   os.mknod(outputDirectory+"/Dicts/"+'README.md',mode=0o666)
 
 
-os.system('cp /home/sanskar/NLP-Deployment-Heroku/udaan-deploy-pipeline/image.xml ' + outputDirectory)
-os.system('cp /home/sanskar/NLP-Deployment-Heroku/udaan-deploy-pipeline/project.xml '+ outputDirectory)
+# os.system('cp /home/sanskar/NLP-Deployment-Heroku/udaan-deploy-pipeline/image.xml ' + outputDirectory)
+# os.system('cp /home/sanskar/NLP-Deployment-Heroku/udaan-deploy-pipeline/project.xml '+ outputDirectory)
 
+os.system('cp ./image.xml ' + outputDirectory)
+os.system('cp ./project.xml '+ outputDirectory)
 if ocr_only == 'false':
   individualOutputDir=outputDirectory+"/CorrectorOutput"
 elif ocr_only == 'true':

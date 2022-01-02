@@ -213,7 +213,6 @@ def writeHTranslateFile(baseName):
     temptransin_doc.close()
     #check_call(["./joint_translate.sh",'temptransin.txt', 'temptransout.txt','en',tgt_lang,'/home/sanskar/NLP-Deployment-Heroku/en-indic'])
     check_call(["./joint_translate.sh",'temptransin.txt', 'temptransout.txt','hi','en','/home/sanskar/NLP-Deployment-Heroku/indic-en'])
-
     print("Printing translated output")
     temptransout_doc=open('temptransout.txt','r')
     for sentence in sentences:
@@ -358,6 +357,8 @@ if changeCount>0:
 #print(dict_obj)
 #print(global_dict)
 indir = sys.argv[1]
+print('indir is:' , indir)
+print('cwd is' , os.getcwd())
 for filename in os.listdir(indir):
     print("Considering 2"+filename+" next")
     if filename.endswith(".hocr"): 
