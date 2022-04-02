@@ -2,7 +2,7 @@
 
 ## How to Run 
 
-1. python3 full-script.py ../../hakmn/book-ocr/license.pdf eng hi
+1. python3 full-script.py ../../sanskar/book-ocr/license.pdf eng hi
 
 * argument1 -> path of the PDf file
 * argument2 -> OCR Language (Currently as eng, hin, urd,san)
